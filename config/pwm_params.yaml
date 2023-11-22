@@ -1,0 +1,12 @@
+md100a_cmd_vel_converter:
+  ros__parameters:
+
+    pwm_left_max_db: 1548
+    pwm_right_max_db: 1558
+
+    pwm_left_min_db: 1493
+    pwm_right_min_db: 1484
+    
+    ## velocities limit
+    vx_max: 2.0
+    wz_max: 2.0
