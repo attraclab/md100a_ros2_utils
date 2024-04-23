@@ -2,6 +2,12 @@
 
 This package is a helper to use motor driver in ROS2.
 
+## Connection Diagram
+
+Please follow the connection diagram as picture below,
+
+![](images/atcrawler_ROS_connection.jpeg)
+
 ## Dependencies
 
 - [ROS1 noetic](http://wiki.ros.org/noetic/Installation/Ubuntu)
