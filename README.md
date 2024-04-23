@@ -116,7 +116,7 @@ All of topics are in standard or existing message type, please check the followi
 
 - `/md100a/cart_mode_cmd` as std_msgs/UInt8; we can change cart mode programmatically from this topic, 0: hold, 1: manual, 2: auto.
 - `/md100a/pwm_cmd` as std_msgs/Int16MultiArray;  we can send PWM value of left/right wheels as [left_pwm, right_pwm], the range is **1000-1500-2000**.
-- `/md100a/pwm_out` as std_msgs/Int16MultiArray; we can send PWM extra output on PWM1, PWM2, and PWM3 ports to drive servo or any PWM driven devices, the value is [PWM1, PWM2, PWM3], the range is **1000-1500-2000**.
+- `/md100a/pwm_out` as std_msgs/Int16MultiArray; this topic depends on the firmware on ESC. If the firmware is *20231117c_AT_MOTOR-DRIVER_100A_2ch_ver9_PWMOUT.hex* then you could see this. We can send PWM extra output on PWM1, PWM2, and PWM3 ports to drive servo or any PWM driven devices, the value is [PWM1, PWM2, PWM3], the range is **1000-1500-2000**.
 
 ### Node
 
