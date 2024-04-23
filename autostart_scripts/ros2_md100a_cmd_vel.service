@@ -1,0 +1,12 @@
+[Unit]
+Description=All of ROS running on the background
+After=multi-user.target
+
+[Service]
+Type=idle
+User=ubuntu
+ExecStart=/usr/bin/bash /home/ubuntu/dev_ws/src/md100a_ros2_utils/autostart_scripts/start_cmd_vel.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

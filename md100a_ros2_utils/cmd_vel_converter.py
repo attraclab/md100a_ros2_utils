@@ -61,6 +61,7 @@ class CmdVelConverter(Node):
 
 		self.pwm_cmd_pub = self.create_publisher(Int16MultiArray, '/md100a/pwm_cmd',10)
 		self.cmd_vel_sub = self.create_subscription(Twist, '/cmd_vel', self.cmd_vel_callback, 10)
+		self.crawler_mode_pub = self.create_publisher(Int8, '/crawler/cart_mode', 10)
 
 	#####################
 	### ROS callbacks ###
@@ -88,10 +89,15 @@ class CmdVelConverter(Node):
 		return SetParametersResult(successful=True)
 
 	def cart_mode_callback(self, msg):
-		pass
+		# print("cart_mode", msg.data)
+		# pass
+		cart_mode_msg = Int8()
+		cart_mode_msg.data = msg.data
+
+		self.crawler_mode_pub.publish(cart_mode_msg)
 
 	def cart_mode_cmd_callback(self, msg):
-		pass
+		print("cart_mode_cmd", msg.data)
 
 	def sbus_callback(self, msg):
 		pass
@@ -120,10 +126,15 @@ class CmdVelConverter(Node):
 
 		if ((abs(vx) > 0.0) and (abs(wz) > 0.0)):
 			y_percent = self.map(vx, -self.vx_max, self.vx_max, -100.0, 100.0)
-			x_percent = self.map(wz, -self.wz_max, self.wz_max, y_percent, -y_percent)
+			# x_percent = self.map(wz, -self.wz_max, self.wz_max, y_percent, -y_percent)
+			if vx >= 0.0:
+				x_percent = self.map(wz, -self.wz_max, self.wz_max, 100.0, -100.0)
+			else:
+				x_percent = self.map(wz, -self.wz_max, self.wz_max, 100.0, -100.0)
 		else:
-			x_percent = self.map(wz, -self.wz_max, self.wz_max, 100.0, -100.0)
 			y_percent = self.map(vx, -self.vx_max, self.vx_max, -100.0, 100.0)
+			x_percent = self.map(wz, -self.wz_max, self.wz_max, 100.0, -100.0)
+			
 
 		left_200_per, right_200_per = self.xy_mixing(x_percent, y_percent)
 		left_pwm, right_pwm = self.wheels_percent_to_wheels_pwm(left_200_per, right_200_per)
