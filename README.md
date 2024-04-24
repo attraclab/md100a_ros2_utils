@@ -141,7 +141,7 @@ ros2 run ros1_bridge dynamic_bridge
 
 ## Termianl 3
 ## source ROS1 env
-rosrun rosserial_python serial_node.py  _port:=/dev/zmoab _baud:=921600
+rosrun rosserial_python serial_node.py  _port:=/dev/md100a _baud:=921600
 
 ## Terminal 4
 ## source ROS2 env
