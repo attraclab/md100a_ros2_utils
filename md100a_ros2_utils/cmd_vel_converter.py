@@ -13,10 +13,10 @@ class CmdVelConverter(Node):
 
 		self.get_logger().info('start cmd_vel_converter')
 
-		self.declare_parameter('pwm_left_max_db', 1500)
-		self.declare_parameter('pwm_left_min_db', 1500)
-		self.declare_parameter('pwm_right_max_db', 1500)
-		self.declare_parameter('pwm_right_min_db', 1500)
+		self.declare_parameter('pwm_left_max_db', 1545)
+		self.declare_parameter('pwm_left_min_db', 1495)
+		self.declare_parameter('pwm_right_max_db', 1555)
+		self.declare_parameter('pwm_right_min_db', 1480)
 		self.declare_parameter('vx_max', 2.0)
 		self.declare_parameter('wz_max', 2.0)
 		self.declare_parameter('show_log', False)

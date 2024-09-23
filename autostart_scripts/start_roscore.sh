@@ -3,7 +3,7 @@
 rosws=dev_ws
 rospackage=md100a_ros2_utils
 
-sleep 15
+sleep 5
 
 export DISPLAY=:0.0
 export LOGFILE=/home/$USER/$rosws/src/$rospackage/autostart_scripts/roscore_node.log
